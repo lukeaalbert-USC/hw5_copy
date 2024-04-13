@@ -10,7 +10,6 @@
 
 #endif
 
-#include <limits.h>
 #include "schedwork.h"
 
 using namespace std;
@@ -60,12 +59,8 @@ bool schedule(
 
     for (unsigned long int i = 0; i < avail.size(); i++) //initialize sched
     {
-        std::vector<Worker_T> day;
+        std::vector<Worker_T> day(dailyNeed);
         sched.push_back(day);
-        for (size_t j = 0; j < dailyNeed; j++)
-        {
-            sched[i].push_back(INT_MAX); //all vals will be INT_MAX
-        }
     }
     return scheduleHelper(avail, dailyNeed, maxShifts, sched, workerToDaysWorked, 0, 0, 0, 0);
 }
